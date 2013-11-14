@@ -70,4 +70,20 @@
     nbproject/build-impl.xml file. 
 
     -->
+    <property name="htools.build.dir" value="../HTools_build"/>
+    <target name="-post-clear">
+          <deltree dir="${htools.build.dir}"/>
+    </target>
+    <target name="-post-jar">
+        <mkdir dir="${htools.build.dir}"/>
+        <copy todir="${htools.build.dir}">
+            <fileset dir="../lib"/>
+        </copy>
+        <copy todir="${htools.build.dir}">
+            <fileset dir="dist/lib"/>
+        </copy>
+        <copy file="../HollerMap/jwintab.dll" todir="${htools.build.dir}" />
+        <copy file="../ExpDO/libjwintab.so" todir="${htools.build.dir}" />
+        <copy file="../ExpDO/all.config" todir="${htools.build.dir}" />
+    </target>
 </project>

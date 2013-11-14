@@ -8,7 +8,7 @@ import hollermap.traces.STrace;
 import Jama.Matrix;
 import hollermap.MCJImports.AlgoMethods;
 import hollermap.MCJImports.Wdouble;
-import hollermap.traces.Trace;
+import htools.core.traces.Trace;
 import hollermap.mat2java.Functions;
 import hollermap.mat2java.Signal;
 import hollermap.mat2java.StdStats;

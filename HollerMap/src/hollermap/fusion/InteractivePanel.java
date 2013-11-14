@@ -4,9 +4,9 @@ package hollermap.fusion;
  * To change this template, choose Tools | Templates and open the template in
  * the editor.
  */
-import hollermap.traces.Trace;
+import htools.core.traces.Trace;
 import hollermap.analyzers.AddSTraceListener;
-import hollermap.input.*;
+import htools.core.input.*;
 import hollermap.traces.STrace;
 import hollermap.manager.TraceManager;
 import java.awt.*;

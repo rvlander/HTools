@@ -6,7 +6,7 @@ package hollermap.manager;
 
 import hollermap.algorithms.TraceAnalyzer;
 import hollermap.algorithms.TraceAnalyzerMCJ;
-import hollermap.traces.Trace;
+import htools.core.traces.Trace;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.io.Serializable;

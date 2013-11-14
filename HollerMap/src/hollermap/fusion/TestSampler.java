@@ -4,7 +4,7 @@
  */
 package hollermap.fusion;
 
-import hollermap.input.Jwintab;
+import htools.core.input.Jwintab;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 

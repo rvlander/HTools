@@ -4,8 +4,8 @@
  */
 package hollermap.traces;
 
-import hollermap.traces.Trace;
 import hollermap.mat2java.Functions;
+import htools.core.traces.Trace;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.io.Serializable;

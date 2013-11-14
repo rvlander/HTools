@@ -7,7 +7,7 @@ package hollermap.manager;
 import hollermap.algorithms.TraceAnalyzer;
 import hollermap.fusion.HollerMapConfigure;
 import hollermap.fusion.InteractivePanel;
-import hollermap.input.Options;
+import htools.core.input.Options;
 import hollermap.output.PDFreport;
 import hollermap.output.PanelReport;
 import java.awt.Component;

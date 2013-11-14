@@ -8,7 +8,7 @@ import hollermap.MCJImports.AlgoMethods;
 import hollermap.MCJImports.Wdouble;
 import hollermap.output.TTLPlotter;
 import hollermap.traces.STrace;
-import hollermap.traces.Trace;
+import htools.core.traces.Trace;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.mc.mcjavacore.MCJMatrixDimensionsException;

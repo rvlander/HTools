@@ -9,7 +9,7 @@ import hollermap.algorithms.CrossingReturn;
 import hollermap.algorithms.TraceAnalyzer;
 import hollermap.mat2java.Functions;
 import hollermap.mat2java.plotter.*;
-import hollermap.traces.Trace;
+import htools.core.traces.Trace;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.FileNotFoundException;

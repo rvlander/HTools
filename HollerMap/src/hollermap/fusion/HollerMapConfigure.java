@@ -4,8 +4,8 @@
  */
 package hollermap.fusion;
 
-import hollermap.input.Jwintab;
-import hollermap.input.Options;
+import htools.core.input.Jwintab;
+import htools.core.input.Options;
 import java.awt.Component;
 import java.awt.GraphicsConfiguration;
 import java.awt.GraphicsDevice;

@@ -8,7 +8,7 @@ import hollermap.algorithms.CrossingReturn;
 import hollermap.algorithms.TraceAnalyzer;
 import hollermap.mat2java.plotter.PlotType;
 import hollermap.mat2java.plotter.Plotter;
-import hollermap.traces.Trace;
+import htools.core.traces.Trace;
 import java.awt.Color;
 
 /**

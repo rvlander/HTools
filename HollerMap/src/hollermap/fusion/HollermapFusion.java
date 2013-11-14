@@ -4,11 +4,11 @@ package hollermap.fusion;
  * To change this template, choose Tools | Templates and open the template in
  * the editor.
  */
-import hollermap.input.Jwintab;
-import hollermap.input.MouseSampler;
-import hollermap.input.OSValidator;
-import hollermap.input.Options;
-import hollermap.input.WintabSampler;
+import htools.core.input.Jwintab;
+import htools.core.input.MouseSampler;
+import htools.core.input.OSValidator;
+import htools.core.input.Options;
+import htools.core.input.WintabSampler;
 import hollermap.manager.TraceManager;
 import hollermap.manager.TraceManagerUI;
 import java.awt.GraphicsConfiguration;

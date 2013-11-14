@@ -103,7 +103,7 @@
             <arg value="includes/java.in"></arg>
         </exec>-->
     </target>
-    <target name="-post-jar">
+    <!--<target name="-post-jar">
         <jar jarfile="dist/saisie-static.jar">
             <zipfileset src="${dist.jar}" excludes="META-INF/*" />
             <zipfileset src="lib/jmatharray.jar" excludes="META-INF/*" />
@@ -116,5 +116,5 @@
                 <attribute name="Main-Class" value="hollermap.fusion.HollermapFusion"/>
             </manifest>
         </jar>
-    </target>
+    </target>-->
 </project>

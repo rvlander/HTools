@@ -2,9 +2,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package htools.editor.UI;
+package htools.hollermap.output;
 
-
+import htools.hollermap.algorithms.TraceAnalyzer;
 import htools.hollermap.mat2java.plotter.Box;
 import htools.hollermap.mat2java.plotter.Figure;
 import htools.hollermap.mat2java.plotter.PlotType;
@@ -20,6 +20,7 @@ abstract public class AnalyzerPlotter implements Serializable{
 
     public int selected;
     Plotter plot = new Plotter();
+    TraceAnalyzer ta;
     public int ptype;
 
     public Figure getSelected() {

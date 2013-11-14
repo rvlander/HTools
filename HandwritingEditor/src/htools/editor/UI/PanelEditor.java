@@ -4,11 +4,14 @@
  */
 package htools.editor.UI;
 
+import htools.hollermap.mat2java.plotter.Figure;
+import htools.hollermap.mat2java.plotter.PlotType;
+import htools.hollermap.mat2java.plotter.ToPanelResizer;
+import htools.hollermap.mat2java.plotter.Box;
 import htools.editor.editor.Editor;
 import htools.editor.editor.EditorListener;
 import htools.editor.editor.SignalPair;
 import htools.editor.matlabfunctions.MatlabMethods;
-import hollermap.mat2java.plotter.*;
 import htools.core.traces.Trace;
 import java.awt.*;
 import java.awt.event.*;

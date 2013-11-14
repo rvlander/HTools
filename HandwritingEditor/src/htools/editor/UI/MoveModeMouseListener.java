@@ -4,8 +4,8 @@
  */
 package htools.editor.UI;
 
-import hollermap.mat2java.plotter.Figure;
-import hollermap.mat2java.plotter.ToPanelResizer;
+import htools.hollermap.mat2java.plotter.Figure;
+import htools.hollermap.mat2java.plotter.ToPanelResizer;
 import java.awt.event.InputEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;

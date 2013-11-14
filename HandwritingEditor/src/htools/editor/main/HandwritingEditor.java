@@ -11,7 +11,7 @@ import htools.editor.UI.Player;
 import htools.editor.UI.SplitPane;
 import htools.editor.UI.UIPersistence;
 import htools.editor.editor.Editor;
-import hollermap.manager.TraceManager;
+import htools.hollermap.manager.TraceManager;
 import htools.core.traces.Trace;
 import java.awt.BorderLayout;
 import java.awt.Component;

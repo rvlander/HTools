@@ -142,7 +142,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				InlineFunctionExpansion="1"
-				AdditionalIncludeDirectories="include;&quot;C:\Program Files\Java\jdk1.6.0_20\include\win32&quot;;&quot;C:\Program Files\Java\jdk1.6.0_20\include&quot;"
+				AdditionalIncludeDirectories="include;&quot;C:\Program Files\Java\jdk1.7.0_45\include\win32&quot;;&quot;C:\Program Files\Java\jdk1.7.0_45\include&quot;"
 				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS"
 				StringPooling="true"
 				RuntimeLibrary="0"

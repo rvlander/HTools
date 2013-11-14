@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<manip name="Letters" iter="3">
+    <experience name="aa" auto="yes" width="0" height="0">Dessinez un aa.</experience>
+    <experience name="ba" auto="yes" width="0" height="0">Dessinez un ba.</experience>
+    <experience name="ca" auto="yes" width="0" height="0">Dessinez un ca.</experience>
+    <experience name="da" auto="yes" width="0" height="0">Dessinez un da.</experience>
+    <experience name="ea" auto="yes" width="0" height="0">Dessinez un ea.</experience>
+    <experience name="fa" auto="yes" width="0" height="0">Dessinez un fa.</experience>
+    <experience name="ga" auto="yes" width="0" height="0">Dessinez un ga.</experience>
+    <experience name="hh" auto="yes" width="0" height="0">Dessinez un hh.</experience>
+    <experience name="jd" auto="yes" width="0" height="0">Dessinez un jd.</experience>
+    <experience name="ka" auto="yes" width="0" height="0">Dessinez un ka.</experience>
+    <experience name="le" auto="yes" width="0" height="0">Dessinez un le.</experience>
+    <experience name="ma" auto="yes" width="0" height="0">Dessinez un ma.</experience>
+    <experience name="ne" auto="yes" width="0" height="0">Dessinez un ne.</experience>
+    <experience name="od" auto="yes" width="0" height="0">Dessinez un od.</experience>
+    <experience name="pe" auto="yes" width="0" height="0">Dessinez un pe.</experience>
+</manip>

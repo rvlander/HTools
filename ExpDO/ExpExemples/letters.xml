@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<manip name="Letters" iter="20" saveimage="yes">
+    <experience name="a" auto="yes" width="200" height="200">Dessinez un a.</experience>
+    <experience name="b" auto="yes" width="200" height="200">Dessinez un b.</experience>
+    <experience name="c" auto="yes" width="200" height="200">Dessinez un c.</experience>
+    <experience name="d" auto="yes" width="200" height="200">Dessinez un d.</experience>
+    <experience name="e" auto="yes" width="200" height="200">Dessinez un e.</experience>
+    <experience name="f" auto="yes" width="200" height="200">Dessinez un f.</experience>
+    <experience name="g" auto="yes" width="200" height="200">Dessinez un g.</experience>
+    <experience name="h" auto="yes" width="200" height="200">Dessinez un h.</experience>
+    <experience name="j" auto="yes" width="200" height="200">Dessinez un j.</experience>
+    <experience name="k" auto="yes" width="200" height="200">Dessinez un k.</experience>
+    <experience name="l" auto="yes" width="200" height="200">Dessinez un l.</experience>
+    <experience name="m" auto="yes" width="200" height="200">Dessinez un m.</experience>
+    <experience name="n" auto="yes" width="200" height="200">Dessinez un n.</experience>
+    <experience name="o" auto="yes" width="200" height="200">Dessinez un o.</experience>
+    <experience name="p" auto="yes" width="200" height="200">Dessinez un p.</experience>
+</manip>

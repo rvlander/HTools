@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<manip name="Japon" iter="10" saveimage="no">
+    <experience name="phrase_chinois" auto="yes">Ecrivez une phrase en chinois à vitesse uselle (sans application particulière).</experience>
+</manip>

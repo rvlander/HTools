@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<manip name="MyExperiment" iter="6"> <!-- 6 iterations per speps-->
+    <experience name="C1" auto="yes">Draw a circle.</experience> <!-- 1 iteration = 1 circle -->
+    <experience name="C2">Draw a line of circles.</experience><!-- 1 iteration = 1 line of circles -->
+    <experience name="C3" heigth="100" width="100">Draw a circle in the box.</experience><!-- has to draw in subarea -->
+</manip>

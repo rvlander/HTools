@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<manip name="Manip1" iter="6">
+    <experience name="C1">Dessinez une ligne de carrés.</experience>
+    <experience name="C2">Dessinez une ligne en créneau.</experience>
+    <experience name="C3">Dessinez une ligne de traits à 45°.</experience>
+    <experience name="C4">Dessinez une ligne en dents de scies.</experience>
+    <experience name="C5">Dessinez une ligne de cercles.</experience>
+    <experience name="C6">Dessinez une frise de e attachés (eeee).</experience>
+    <experience name="C7">Dessinez une ligne de gammas.</experience>
+    <experience name="C8">Dessinez une ligne de U.</experience>
+    <experience name="C9">Dessinez une ligne crochets (symétrique de J majuscule).</experience>
+    <experience name="C10">Dessinez une ligne de b séparés.</experience>
+    <experience name="C11">Dessinez une ligne de b liés (sans mauvais jeu de mot).</experience>
+    <experience name="C12">Dessinez une ligne de h séparés.</experience>
+    <experience name="C13">Dessinez une ligne de h liés (sans mauvais jeu de mot).</experience>
+    <experience name="C14">Ecrivez une ligne de "lune".</experience>
+    <experience name="C15">Ecrivez une ligne de "lune" tournées à 45° vers le haut.</experience>
+    <experience name="C16">Ecrivez une ligne de "boucle".</experience>
+    <experience name="C17">Ecrivez une ligne de "boucle" tournées à 45° vers le haut.</experience>
+    <experience name="C18">Faites une ligne de votre signature.</experience>
+    <experience name="C19">Ecrivez la phrase : "La mort du jeune radis".</experience>
+</manip>

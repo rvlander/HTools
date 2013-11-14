@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<manip name="Letters" iter="10000">
+    <experience name="letter" auto="yes" width="40" height="40">Dessinez une lettre.</experience>
+</manip>

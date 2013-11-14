@@ -1,0 +1,105 @@
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    </head>
+
+    <body>
+        <div style="margin:20px;width:800px;">
+            <h1>HollerMap</h1>
+
+            <h2>Manual</h2>
+            <h3>Installation</h3>
+            <p>Download <a href="setupHollerMap.exe">HollerMap</a> and execute 
+                it. Follow the instructions.</p>
+            <p>First of all you have to configure the program. In order to 
+                acheive this, launch <b>HollerMapConfigure</b> in <b>"Windows Menu">Programs>HollerMap</b>. Theb follow these steps :<p>
+            <ul>
+                <li>A white screen appears, move your pen on the screen to touch each of the side of the screen. Then press any key.</li>
+                <li>Select the directories where you want the files to be exported.</li>
+            </ul>
+
+            <h3>Usage</h3>
+            <p>Launch <b>"Windows Menu">Programs>HollerMap>HollerMap</b>. Two panel 
+                appers. The <b>drawing panel</b> a full screen white frame with horizontal lines and 
+                the <b>grapth panel</b> allowing you manage the program.
+
+            <p> .... <p>
+
+            <h2>Downloads</h2>
+            <ul>
+                <li><a href="setupHollerMap.exe">HollerMap</a></li>
+                <li><a href="readTR_sep.m">readTR_sep</a></li>
+                <li><a href="readSTR_sep.m">readSTR_sep</a></li>
+            </ul>
+
+            <h2>Version Notes</h2>
+            <h3>X Juin 2012</h3>
+            <h4>HolleMap new features :</h4>
+            <ul>
+                <li> Added margin in background.</li>
+                <li> Change basename of next studies.</li>
+                <li> Removing Traces and Analyzers.</li>
+                <li> Bug of Graph Panel grid corrected</li>
+                <li> Graph Panel bigger points</li>
+                <li> Possibility to manage a default list of Analyzers to apply on new study creation</li>
+                <li> Corrected bug  : red and orange points position (zero velocity points)</li>
+                <li> Corrected bug  : loading file saved with previous version</li>
+            </ul>
+            <h3>24 Mai 2012</h3>
+            <h4>HolleMap new features :</h4>
+            <ul>
+                <li> PDF report is back ! it is saved in the Export path.</li>
+                <li> One bug concerning the display of the original stroke has been corrected (it is now smoother)</li>
+                <li> More information are display one the Manager Panel. </li>
+            </ul>
+            <h3>27 Avril 2012</h3>
+            <h4>HolleMap new features :</h4>
+            <ul>
+                <li> Improved zooming capabilites in GraphPanel (try using wheel, left and rigth button dragging)</li>
+                <li> Several bugs corrected</li>
+                <li> Improved interface. Smaller left column. The left colunm is now resizable. </li>
+                <li> Possibility to export the selected Trace, and the Strace and TraceFromStrace associated to the selected Analyzer at once. (une menu Export or U shortcut)</li>
+                <li> In the Graph Panel possibility to change the mode in which graphics are displayed (short cut G). Thre modes available. Plots, Lines and Lined plots.</li>
+                <li> Better Look and Feel</li>
+                <li> The sampling of the generated signals and the original signals are now the same.</li>
+
+            </ul>
+            <h3>25 Avril 2012</h3>
+            <h4>HolleMap new features :</h4>
+            <ul>
+
+                <li> Added zooming/dragging capabilities on graph panel</li>
+                <li> Possibility to change the background of the drawing panel </li>
+                <li> Lighter of screen stroke parts </li>
+                <li> Possibility to export all the traces, all the STraces and all the synthetized traces</li>
+                <li> Better default export names</li>
+
+            </ul>
+            <!-- </ul>
+            
+             <p> La <em>touche E</em> permet d'enregistrer l'ensemble des enregistrements dans un fichier. Les traces sont stockées sous la forme :</p>
+             <code>
+                 #<br />
+                 TA1,XA1,YA1<br />
+                 TA2,XA2,YA2<br />
+                 .....<br />
+                 #<br />
+                 TB1,XB1,YB1<br />
+                 TB2,YB2,YB2<br />
+             </code>
+             <p>La fonction matlab <a href="readTR_sep.m">readTR_sep</a> permet de lire un tel fichier. Voici son utilisation :</p>
+             <code>
+                 [inds,<span style="color:#f00">T</span>,X,Y] = readTR_sep('chemin_vers_le_fichier');
+             </code>
+             <p>inds contient les indices de changement de trace relativement au vecteurs X et Y.</p>
+             
+             <h3>Paramètres extraits.</h3>
+             <p>La <em>touche S</em> permet d'exporter les paramètres extraits d'une trace.</p>
+             <p>La fonction matlab <a href="readSTR_sep.m">readSTR_sep</a> permet de lire le fichier généré.</p>
+             <code>
+                 [a,b,wx,wy,phix,phiy,numx,numy,t0xs,t0ys,c,startx,starty,tfinal] = readSTR_sep('chemin_vers_le_fichier');
+             </code>
+            -->
+        </div>
+    </body>
+</html>

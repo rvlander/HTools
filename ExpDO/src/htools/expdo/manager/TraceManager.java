@@ -6,7 +6,7 @@ package htools.expdo.manager;
 
 import htools.expdo.experience.Manip;
 import htools.expdo.experience.Experience;
-import htools.expdo.fusion.InteractivePanel;
+import htools.expdo.main.InteractivePanel;
 import htools.expdo.input.Options;
 import htools.core.traces.Trace;
 import java.awt.Graphics2D;

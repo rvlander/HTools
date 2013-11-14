@@ -1,4 +1,4 @@
-package htools.expdo.fusion;
+package htools.expdo.main;
 
 /*
  * To change this template, choose Tools | Templates and open the template in

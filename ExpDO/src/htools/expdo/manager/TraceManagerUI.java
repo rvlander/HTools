@@ -6,8 +6,8 @@ package htools.expdo.manager;
 
 import htools.expdo.experience.ExpIO;
 import htools.expdo.experience.Manip;
-import htools.expdo.fusion.HollerMapConfigure;
-import htools.expdo.fusion.InteractivePanel;
+//import htools.core.tools.HToolsConfigure;
+import htools.expdo.main.InteractivePanel;
 import htools.expdo.input.Options;
 
 import java.awt.Component;
@@ -33,7 +33,7 @@ import org.jdom2.JDOMException;
  */
 public class TraceManagerUI extends javax.swing.JFrame implements TraceManagerListener, ListSelectionListener {
 
-    HollerMapConfigure hmc = new HollerMapConfigure();
+    //HToolsConfigure hmc = new HToolsConfigure();
     TraceManager tm;
     InteractivePanel ip;
 
@@ -318,7 +318,7 @@ public class TraceManagerUI extends javax.swing.JFrame implements TraceManagerLi
     }//GEN-LAST:event_jMenuRecordingActionPerformed
 
     private void jMenuConfigureExportPathActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuConfigureExportPathActionPerformed
-        hmc.configureExportPath(this);
+      //  hmc.configureExportPath(this);
     }//GEN-LAST:event_jMenuConfigureExportPathActionPerformed
 
     private void jMenuSetBackgroundActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuSetBackgroundActionPerformed

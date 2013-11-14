@@ -1,4 +1,4 @@
-package htools.expdo.fusion;
+package htools.expdo.main;
 
 /*
  * To change this template, choose Tools | Templates and open the template in
@@ -32,19 +32,19 @@ import org.jdom2.JDOMException;
  *
  * @author rvlander
  */
-public class HollermapFusion {
+public class ExpDO {
 
     public static void main(String argsr[]) throws JDOMException, IOException {
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(HollermapFusion.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ExpDO.class.getName()).log(Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            Logger.getLogger(HollermapFusion.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ExpDO.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            Logger.getLogger(HollermapFusion.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ExpDO.class.getName()).log(Level.SEVERE, null, ex);
         } catch (UnsupportedLookAndFeelException ex) {
-            Logger.getLogger(HollermapFusion.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ExpDO.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         // On récupére la liste des écrans :

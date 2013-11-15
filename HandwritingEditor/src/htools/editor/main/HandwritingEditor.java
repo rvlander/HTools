@@ -72,7 +72,7 @@ public class HandwritingEditor extends javax.swing.JFrame {
         
         
         
-        if(new File(this.currentFile).exists()){
+        if(this.currentFile !=null && new File(this.currentFile).exists()){
             this.setTitle("HandwritingEditor - " + this.getCurrentFile());
             this.loadTrace();
         }
@@ -195,8 +195,10 @@ public class HandwritingEditor extends javax.swing.JFrame {
         JFileChooser fc = new JFileChooser();
         fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
 
-        fc.setCurrentDirectory(new File(this.getCurrentFile()).getParentFile());
-
+        if(this.getCurrentFile()!=null){
+            fc.setCurrentDirectory(new File(this.getCurrentFile()).getParentFile());
+        }
+        
         int returnVal = fc.showDialog(this, "Load");
 
         if (returnVal == JFileChooser.APPROVE_OPTION) {

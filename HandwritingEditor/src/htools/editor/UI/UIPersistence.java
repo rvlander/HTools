@@ -30,7 +30,7 @@ import javax.swing.plaf.synth.SynthSplitPaneUI;
  */
 public class UIPersistence {
 
-    static String file = "UIsav";
+    static String file = System.getProperty("user.home") + "/.config/HTools/HandWritingEditorUI";
     static PanelEditorPopupMenu menu;
 
     public static void saveUI(HandwritingEditor f,JPanel rootPane) throws IOException {

@@ -30,8 +30,6 @@ public class TraceStudy implements Serializable {
     }
     private Vector<TraceAnalyzer> vta;
     private int selectedTraceAnalyzer;
-    private boolean play = false;
-    private long know = 0;
 
     public TraceStudy(Trace t) {
         nbrStudy++;
@@ -62,29 +60,12 @@ public class TraceStudy implements Serializable {
         this.selectedTraceAnalyzer = vta.size() - 1;
     }
 
-    public void paintTrace(Graphics2D g, Trace tra,int height) {
-        g.setColor(Color.blue);
-        for (int i = 1; i < tra.T.length; i++) {
-            if (!this.play || tra.T[i] < this.know) {
-                if (tra.Z[i] == 1) {
-                    g.setColor(Color.blue);
-                } else {
-                    g.setColor(Color.LIGHT_GRAY);
-                }
-                g.drawLine((int) tra.X[i - 1], height-(int) tra.Y[i - 1], (int) tra.X[i], height-(int) tra.Y[i]);
-            } else {
-                break;
-            }
-        }
-    }
-
-    public void paintSTrace(Graphics2D g, double[] x, double[] y, double[] t, int height) {
+    public void paintSTrace(Graphics2D g, double[] x, double[] y, double[] t, long time, int height) {
         int n = t.length;
 
         double tfin = t[n - 1];
-        if (this.play) {
-            tfin = Math.min(tfin, this.know);
-        }
+
+        tfin = Math.min(tfin, time);
         for (int i = 1; i < n && t[i] <= tfin; i++) {
             double down = this.trace.Z[i];
             if (down == 1) {
@@ -98,23 +79,15 @@ public class TraceStudy implements Serializable {
         }
     }
 
-    void paint(Graphics2D g, boolean traceBleu, boolean traceRouge,int height) {
+    void paint(Graphics2D g, boolean traceBleu, boolean traceRouge,long time,int height) {
         TraceAnalyzer ta = this.vta.get(this.selectedTraceAnalyzer);
 
         if (traceBleu) {
-            paintTrace(g, trace,height);
+            trace.paint(g, time, height);
         }
         if (traceRouge && ta.getType()!=TraceAnalyzer.TTL_TYPE) {
-            paintSTrace(g, ta.getSamplex(), ta.getSampley(), ta.getSampling(),height);
+            paintSTrace(g, ta.getSamplex(), ta.getSampley(), ta.getSampling(), time,height);
         }
-    }
-
-    void setPlay(boolean p) {
-        play = p;
-    }
-
-    void setKnow(long know) {
-        this.know = know;
     }
 
     public int getSelectedTraceAnalyzer() {

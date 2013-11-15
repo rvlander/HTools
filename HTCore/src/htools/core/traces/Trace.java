@@ -4,8 +4,9 @@
  */
 package htools.core.traces;
 
-
 import htools.core.mat2java.Functions;
+import java.awt.Color;
+import java.awt.Graphics2D;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -60,15 +61,14 @@ public class Trace implements Serializable {
 
     public static Trace read(BufferedReader pr) throws IOException {
 
-        
-      //  System.out.println("ParceBegin !" );
+        //  System.out.println("ParceBegin !" );
         String line = " ";
         Vector<Double> t = new Vector<Double>();
         Vector<Double> x = new Vector<Double>();
         Vector<Double> y = new Vector<Double>();
         Vector<Double> z = new Vector<Double>();
         line = pr.readLine();
-           line = pr.readLine();
+        line = pr.readLine();
         while (line != null && !line.contains("#")) {
             //  System.out.println(line);
             String[] params = line.split(",");
@@ -76,7 +76,7 @@ public class Trace implements Serializable {
             x.add(Double.parseDouble(params[1]));
             y.add(Double.parseDouble(params[2]));
             z.add(0.0);
-             //System.out.println(params[0] +" "+params[2] );
+            //System.out.println(params[0] +" "+params[2] );
             line = pr.readLine();
         }
 
@@ -87,8 +87,20 @@ public class Trace implements Serializable {
         tr.Y = Trace.doubleArrayFromDoubleVector(y);
         tr.Z = Trace.doubleArrayFromDoubleVector(z);
 
-
         return tr;
 
+    }
+
+    public void paint(Graphics2D g, long time, int height) {
+        g.setColor(Color.blue);
+        for (int i = 1;  i < T.length && T[i] < time ; i++) {
+            if (Z[i] == 1) {
+                g.setColor(Color.blue);
+            } else {
+                g.setColor(Color.LIGHT_GRAY);
+            }
+            g.drawLine((int) X[i - 1], height - (int) Y[i - 1],
+                    (int) X[i], height - (int) Y[i]);
+        }
     }
 }

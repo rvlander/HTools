@@ -7,7 +7,7 @@ package htools.expdo.manager;
 import htools.expdo.experience.ExpIO;
 import htools.expdo.experience.Manip;
 //import htools.core.tools.HToolsConfigure;
-import htools.expdo.main.InteractivePanel;
+import htools.core.input.InteractivePanel;
 import htools.expdo.input.Options;
 
 import java.awt.Component;
@@ -306,7 +306,7 @@ public class TraceManagerUI extends javax.swing.JFrame implements TraceManagerLi
     }//GEN-LAST:event_jMenuSaveActionPerformed
 
     private void jMenuPlayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuPlayActionPerformed
-        ip.play();
+
     }//GEN-LAST:event_jMenuPlayActionPerformed
 
     private void jMenuModeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuModeActionPerformed
@@ -466,7 +466,8 @@ public class TraceManagerUI extends javax.swing.JFrame implements TraceManagerLi
             ObjectInputStream oos = new ObjectInputStream(fos);
 
             this.tm = (TraceManager) oos.readObject();
-            this.ip.setTM(tm);
+            this.ip.setInteractivePanelListener(tm);
+            //tm.setInteractivePanel(ip);
             this.addedTraceStudy();
             //     this.tm.loadListener(this);
 

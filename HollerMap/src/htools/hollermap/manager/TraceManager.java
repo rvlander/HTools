@@ -4,6 +4,7 @@
  */
 package htools.hollermap.manager;
 
+import htools.core.input.InteractivePanelListener;
 import htools.hollermap.algorithms.TTLAnalyzer;
 import htools.hollermap.algorithms.TraceAnalyzer;
 import htools.hollermap.algorithms.TraceAnalyzerMCJ;
@@ -13,15 +14,17 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.Timer;
 
 /**
  *
  * @author rvlander
  */
-public class TraceManager implements Serializable {
+public class TraceManager implements InteractivePanelListener, Serializable {
 
     static final long serialVersionUID = 1515L;
     private Vector<TraceStudy> vts = new Vector<TraceStudy>();
@@ -31,21 +34,25 @@ public class TraceManager implements Serializable {
     private int selectedDefaultAnalyzer;
     private Vector<TraceAnalyzer> defaultAnalysers;
 
-    public Vector<TraceStudy> getVTS() {
-        return vts;
-    }
+    private boolean traceBleu = true;
+    private boolean traceRouge = true;
+
+    private boolean play = false;
+    private int cumulTime;
+    private int limitTime = 6000;
+    private long lastDate;
 
     public TraceManager() {
         vts = new Vector<TraceStudy>();
         this.initializedDefaultAnalyzers();
     }
-    
-    private void initializedDefaultAnalyzers(){
+
+    private void initializedDefaultAnalyzers() {
         this.defaultAnalysers = new Vector<TraceAnalyzer>();
         //this.defaultAnalysers.add(new TTLAnalyzer(null));
         //this.defaultAnalysers.add(new TraceAnalyzer(null, 0, false));
         this.defaultAnalysers.add(new TraceAnalyzerMCJ(null, 0, false));
-        
+
     }
 
     public void addTrace(Trace t) {
@@ -70,6 +77,10 @@ public class TraceManager implements Serializable {
         }
     }
 
+    public Vector<TraceStudy> getVTS() {
+        return vts;
+    }
+
     public void setStudyBaseName(String name) {
         this.base_study_name = name;
     }
@@ -86,9 +97,32 @@ public class TraceManager implements Serializable {
         vtml.add(tlm);
     }
 
-    public void paint(Graphics2D g, boolean traceBleu, boolean traceRouge, int height) {
+    public void paint(Graphics2D g, int height) {
+        long date = new Date().getTime();
+        cumulTime += date - lastDate;
+        lastDate = date;
+        long ct = Long.MAX_VALUE;
+        if (play) {
+            ct = cumulTime;
+        }
+
         if (!vts.isEmpty()) {
-            vts.get(selectedStudy).paint(g, traceBleu, traceRouge,height);
+            vts.get(selectedStudy).paint(g, traceBleu, traceRouge, ct, height);
+        }
+        if (cumulTime > limitTime) {
+            cumulTime = 0;
+        }
+    }
+
+    public void traceHide() {
+        if (this.traceRouge && this.traceBleu) {
+            traceBleu = false;
+        } else if (this.traceRouge && !this.traceBleu) {
+            traceBleu = true;
+            traceRouge = false;
+        } else {
+            traceRouge = true;
+            traceBleu = true;
         }
     }
 
@@ -96,21 +130,15 @@ public class TraceManager implements Serializable {
         this.selectedStudy = selectedStudy;
     }
 
-    public void setPlay(boolean p) {
-        if (!vts.isEmpty()) {
-            this.vts.get(selectedStudy).setPlay(p);
-        }
+    public void play() {
+        this.play = !play;
+        cumulTime = 0;
+        lastDate = new Date().getTime();
     }
 
-    public void setKnow(long know) {
-        if (!vts.isEmpty()) {
-            this.vts.get(selectedStudy).setKnow(know);
-        }
-    }
-
-    void addTraceAnalyzer(int type,double varang, boolean cz) {
+    void addTraceAnalyzer(int type, double varang, boolean cz) {
         TraceStudy ts = this.vts.get(selectedStudy);
-        TraceAnalyzer ta = TraceAnalyzer.createTraceAnalyzer(type,ts.getTrace(), varang, cz);
+        TraceAnalyzer ta = TraceAnalyzer.createTraceAnalyzer(type, ts.getTrace(), varang, cz);
         ta.computeAll();
         ts.addTraceAnalyzer(ta);
 
@@ -239,8 +267,8 @@ public class TraceManager implements Serializable {
         this.selectedDefaultAnalyzer = selectedDefaultAnalyzer;
     }
 
-    public void addDefaultAnalyzer(int type,double ang, boolean czero) {
-        this.defaultAnalysers.add(TraceAnalyzer.createTraceAnalyzer(type,null, ang, czero));
+    public void addDefaultAnalyzer(int type, double ang, boolean czero) {
+        this.defaultAnalysers.add(TraceAnalyzer.createTraceAnalyzer(type, null, ang, czero));
         for (TraceManagerListener tlm : vtml) {
             tlm.addedDefaultAnalyzer();
         }

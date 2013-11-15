@@ -4,6 +4,7 @@ package htools.expdo.main;
  * To change this template, choose Tools | Templates and open the template in
  * the editor.
  */
+import htools.core.input.InteractivePanel;
 import htools.expdo.experience.ExpIO;
 import htools.expdo.experience.Manip;
 import htools.expdo.input.Options;
@@ -95,9 +96,11 @@ public class ExpDO {
         samp.start();
         
         
-        TraceManager tm = ((InteractivePanel)f).getTM();
+        TraceManager tm = new TraceManager();
+        //tm.setInteractivePanel((InteractivePanel)f);
        // DefaultMutableTreeNode manip = ExpIO.readXML("./ExpExemples/xp1.xml");
         
+        ((InteractivePanel)f).setInteractivePanelListener(tm);
 
         
         TraceManagerUI tmu = new TraceManagerUI(tm,(InteractivePanel)f);

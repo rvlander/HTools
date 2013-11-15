@@ -6,7 +6,8 @@ package htools.expdo.manager;
 
 import htools.expdo.experience.Manip;
 import htools.expdo.experience.Experience;
-import htools.expdo.main.InteractivePanel;
+import htools.core.input.InteractivePanel;
+import htools.core.input.InteractivePanelListener;
 import htools.expdo.input.Options;
 import htools.core.traces.Trace;
 import java.awt.Graphics2D;
@@ -26,7 +27,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
  *
  * @author rvlander
  */
-public class TraceManager implements Serializable {
+public class TraceManager implements InteractivePanelListener,Serializable {
 
     static final long serialVersionUID = 1515L;
     private DefaultMutableTreeNode tmanip;
@@ -273,5 +274,12 @@ public class TraceManager implements Serializable {
 
     public void setInteractivePanel(InteractivePanel aThis) {
         this.interactivePanel = aThis;
+    }
+
+    @Override
+    public void paint(Graphics2D g,int h) {
+        for(Trace t:getVts()){
+            t.paint(g, Long.MAX_VALUE, h);
+        }
     }
 }

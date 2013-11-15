@@ -6,7 +6,7 @@ package htools.hollermap.manager;
 
 import htools.hollermap.algorithms.TraceAnalyzer;
 //import htools.hollermap.main.HollerMapConfigure;
-import htools.hollermap.main.InteractivePanel;
+import htools.core.input.InteractivePanel;
 import htools.core.input.Options;
 import htools.hollermap.output.PDFreport;
 import htools.hollermap.output.PanelReport;
@@ -538,11 +538,11 @@ public class TraceManagerUI extends javax.swing.JFrame implements TraceManagerLi
     }//GEN-LAST:event_jMenuSaveActionPerformed
 
     private void jMenuHideActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuHideActionPerformed
-        ip.tracehide();
+        tm.traceHide();
     }//GEN-LAST:event_jMenuHideActionPerformed
 
     private void jMenuPlayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuPlayActionPerformed
-        ip.play();
+        tm.play();
     }//GEN-LAST:event_jMenuPlayActionPerformed
 
     private void jMenuModeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuModeActionPerformed
@@ -554,15 +554,21 @@ public class TraceManagerUI extends javax.swing.JFrame implements TraceManagerLi
     }//GEN-LAST:event_jMenuRecordingActionPerformed
 
     private void jMenuExportTraceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuExportTraceActionPerformed
-        ip.exportTraces(this);
+        String sf = JOptionPane.showInputDialog(this, "Le nom du fichier ?", "trace_enregistree_");
+        String file = Options.getExportPath() + "/" + sf;
+        tm.exportSelectedTrace(file);
     }//GEN-LAST:event_jMenuExportTraceActionPerformed
 
     private void jMenuExportSTraceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuExportSTraceActionPerformed
-        ip.exportSTraces(this);
+        String sf = JOptionPane.showInputDialog(this, "Le nom du fichier ?", "strace_parametres_");
+        String file = Options.getExportPath() + "/" + sf;
+        tm.exportSelectedSTrace(file);
     }//GEN-LAST:event_jMenuExportSTraceActionPerformed
 
     private void jMenuExportTraceFromStraceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuExportTraceFromStraceActionPerformed
-        ip.exportTraceFromStrace(this);
+        String sf = JOptionPane.showInputDialog(this, "Le nom du fichier ?", "strace_reconstruite_");
+        String file = Options.getExportPath() + "/" + sf;
+        tm.exportSelectedTraceFromSTrace(file);
     }//GEN-LAST:event_jMenuExportTraceFromStraceActionPerformed
 
     private void jMenuConfigureExportPathActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuConfigureExportPathActionPerformed
@@ -570,15 +576,21 @@ public class TraceManagerUI extends javax.swing.JFrame implements TraceManagerLi
     }//GEN-LAST:event_jMenuConfigureExportPathActionPerformed
 
     private void jMenuExportAllTracesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuExportAllTracesActionPerformed
-        ip.exportAllTraces(this);
+        String sf = JOptionPane.showInputDialog(this, "Préfixe des noms ?", "trace_enregistree_");
+        String file = Options.getExportPath() + "/" + sf;
+        tm.exportAllTrace(file);
     }//GEN-LAST:event_jMenuExportAllTracesActionPerformed
 
     private void jMenuAllSTracesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuAllSTracesActionPerformed
-        ip.exportAllSTraces(this);
+        String sf = JOptionPane.showInputDialog(this, "Préfixe des noms ?", "strace_parametres_");
+        String file = Options.getExportPath() + "/" + sf;
+        tm.exportAllSTrace(file);
     }//GEN-LAST:event_jMenuAllSTracesActionPerformed
 
     private void jMenuAllTracesFromSTracesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuAllTracesFromSTracesActionPerformed
-        ip.exportAllTraceFromStrace(this);
+        String sf = JOptionPane.showInputDialog(this, "Préfixe des noms ?", "strace_reconstruite_");
+        String file = Options.getExportPath() + "/" + sf;
+        tm.exportAllTraceFromSTrace(file);
     }//GEN-LAST:event_jMenuAllTracesFromSTracesActionPerformed
 
     private void jMenuSetBackgroundActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuSetBackgroundActionPerformed
@@ -601,7 +613,13 @@ public class TraceManagerUI extends javax.swing.JFrame implements TraceManagerLi
     }//GEN-LAST:event_jMenuChangePlotModeActionPerformed
 
     private void jMenuExportSelectedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuExportSelectedActionPerformed
-        ip.exportSelectedAll(this);
+        String sf = JOptionPane.showInputDialog(this, "Suffixe des noms ?", "");
+        String file = Options.getExportPath() + "/trace_enregistree_" + sf;
+        tm.exportSelectedTrace(file);
+        file = Options.getExportPath() + "/strace_reconstruite_" + sf;
+        tm.exportSelectedTraceFromSTrace(file);
+        file = Options.getExportPath() + "/strace_parametres_" + sf;
+        tm.exportSelectedSTrace(file);
     }//GEN-LAST:event_jMenuExportSelectedActionPerformed
 
     private void jMenuPDFReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuPDFReportActionPerformed
@@ -778,7 +796,7 @@ public class TraceManagerUI extends javax.swing.JFrame implements TraceManagerLi
             ObjectInputStream oos = new ObjectInputStream(fos);
 
             this.tm = (TraceManager) oos.readObject();
-            this.ip.setTM(tm);
+            this.ip.setInteractivePanelListener(tm);
             for (TraceStudy ts : tm.getVTS()) {
                 for (TraceAnalyzer ta : ts.getVTA()) {
                     ta.computeAll();

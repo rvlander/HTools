@@ -4,6 +4,7 @@ package htools.hollermap.main;
  * To change this template, choose Tools | Templates and open the template in
  * the editor.
  */
+import htools.core.input.InteractivePanel;
 import htools.core.input.Jwintab;
 import htools.core.input.MouseSampler;
 import htools.core.input.OSValidator;
@@ -75,7 +76,8 @@ public class HollermapFusion {
         samp.start();
 
 
-        TraceManager tm = ip.getTM();
+        TraceManager tm = new TraceManager();
+        ((InteractivePanel)ip).setInteractivePanelListener(tm);
         TraceManagerUI tmu = new TraceManagerUI(tm, ip);
         tm.addListener(tmu);
         tmu.setVisible(true);

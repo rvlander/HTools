@@ -5,10 +5,13 @@
 package htools.core.tools;
 
 import htools.core.input.Jwintab;
+import htools.core.input.MouseSampler;
 import htools.core.input.Options;
 import htools.core.input.OSValidator;
+import htools.core.input.WintabSampler;
 import htools.expdo.fusion.InteractivePanel;
 import java.awt.Component;
+import java.awt.DisplayMode;
 import java.awt.GraphicsConfiguration;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
@@ -20,6 +23,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -27,10 +31,83 @@ import javax.swing.JFrame;
  */
 public class HToolsConfigure implements KeyListener {
 
-    private long delay = 50;
-    boolean con = true;
+    public static void determineInputMethod() {
+        String[] possibilities = {"Tablet", "Mouse"};
 
-    public void configureExportPath(Component c) {
+        String s = null;
+        while (s != null) {
+            s = (String) JOptionPane.showInputDialog(
+                    null,
+                    "Choose input method",
+                    "Input Method",
+                    JOptionPane.INFORMATION_MESSAGE, null,
+                    // les possibilités 
+                    possibilities,
+                    possibilities[1]);// valeur initiale
+        }
+        if(s.equals("Mouse")){
+            Options.setSamplerType("mouse");
+        }else{
+            Options.setSamplerType("wintab");
+            if(OSValidator.isUnix()){
+                String inputValue = JOptionPane.showInputDialog("Type tablet dir please ..");
+                Options.setWacomDir(inputValue);
+            }
+        }
+    }
+
+    public static void configureSensorBox(){
+        // On récupére la liste des écrans :
+        GraphicsEnvironment gEnv = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        GraphicsDevice[] devices = gEnv.getScreenDevices();
+
+        int dev =0;
+        
+        GraphicsConfiguration gConfig = null;
+        if (devices.length > 1) {
+            dev =1;
+            gConfig = devices[1].getDefaultConfiguration();
+        }
+        
+        JFrame f = new InteractivePanel(gConfig);
+
+        f.setUndecorated(true);
+        f.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        f.setVisible(true);
+      /*  Jwintab.open(f.getTitle());
+        ((InteractivePanel) f).start(0, 0);*/
+        
+        
+          Thread samp;
+        if (Options.getSamplerType().equals("wintab")) {
+            if(OSValidator.isUnix()){
+                Jwintab.open(Options.getWacomDir());
+            } else if (OSValidator.isWindows()){
+                Jwintab.open(f.getTitle());
+            }
+            System.out.println("version = " + Jwintab.getVersion());
+            WintabSampler ws = new WintabSampler((InteractivePanel)f);
+           // Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+            
+            DisplayMode dm = devices[dev].getDisplayMode();
+            //WintabSampler.screenX = screenSize.width;
+            //WintabSampler.screenY = screenSize.height;
+            
+            System.out.println(dm.getWidth() +" " + dm.getHeight());
+            WintabSampler.screenX =dm.getWidth();
+            WintabSampler.screenY = dm.getHeight();
+            samp = new Thread(ws);
+        } else {
+            MouseSampler ms = new MouseSampler((InteractivePanel)f);
+            samp = new Thread(ms);
+        }
+        samp.setPriority(Thread.MAX_PRIORITY);
+        samp.start();
+        
+        
+    }
+    
+    public static void configureExportPath(Component c) {
         JFileChooser fc = new JFileChooser();
         fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 
@@ -48,7 +125,7 @@ public class HToolsConfigure implements KeyListener {
         }
     }
 
-    public void configurePDFReportPath(Component c) {
+    public static void configurePDFReportPath(Component c) {
         JFileChooser fc = new JFileChooser();
         fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 
@@ -77,8 +154,6 @@ public class HToolsConfigure implements KeyListener {
         int ymin = Integer.MAX_VALUE;
         int ymax = Integer.MIN_VALUE;
 
-
-
         while (con) {
             long debut = System.currentTimeMillis();
             int res = Jwintab.getPacket(lesX, lesY, lesB, lesT);
@@ -102,8 +177,6 @@ public class HToolsConfigure implements KeyListener {
 
             }
 
-
-
             try {
                 long d = delay - (System.currentTimeMillis() - debut);
                 if (d < 0) {
@@ -119,50 +192,13 @@ public class HToolsConfigure implements KeyListener {
         Options.setSensorBox(xmin, xmax, ymin, ymax);
 
     }
-
-    public void keyTyped(KeyEvent e) {
-        System.out.println("typed");
-        con = false;
-        System.out.println("keyTyped :" + con);
-    }
-
-    public void keyPressed(KeyEvent e) {
-    }
-
-    public void keyReleased(KeyEvent e) {
-    }
-
-    public static void main(String args[]) {
-        // On récupére la liste des écrans :
-        GraphicsEnvironment gEnv = GraphicsEnvironment.getLocalGraphicsEnvironment();
-        GraphicsDevice[] devices = gEnv.getScreenDevices();
-
-        // On récupère la configuration du second écran (s'il existe) :r
-        GraphicsConfiguration gConfig = null;
-        if (devices.length > 1) {
-            gConfig = devices[1].getDefaultConfiguration();
-        }
-
-        JFrame f = new JFrame(gConfig);
-        f.setUndecorated(true);
-
-        f.setExtendedState(JFrame.MAXIMIZED_BOTH);
-
-        f.setVisible(true);
-
-        HToolsConfigure hmc = new HToolsConfigure();
-        f.addKeyListener(hmc);
-        f.setFocusable(true);
-        Jwintab.open("/dev/input/event5");
-        /*if (OSValidator.isUnix()) {
-            Jwintab.open(Options.getWacomDir());
-        } else if (OSValidator.isWindows()) {
-            Jwintab.open(f.getTitle());
-        }*/
-
-        hmc.calibrate();
-        //Jwintab.close();
-
-        System.exit(0);
+    
+    public static void launchConfigSuite() {
+        determineInputMethod();
+        
+        
+        
+        configureExportPath(null);
+        configurePDFReportPath(null);
     }
 }

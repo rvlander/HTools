@@ -371,7 +371,7 @@ public class InteractivePanel extends JFrame implements KeyListener, ActionListe
     private long time;
 
     @Override
-    public void newData(float[] lesX, float[] lesY, int[] lesB, long[] lesT, int res) {
+    public void newSizedData(float[] lesX, float[] lesY, int[] lesB, long[] lesT, int res) {
         //System.out.println("les T : " + Arrays.toString(lesT));
         /*System.out.println(Arrays.toString(lesX));
          System.out.println(Arrays.toString(lesB));*/
@@ -436,5 +436,9 @@ public class InteractivePanel extends JFrame implements KeyListener, ActionListe
         Graphics2D g2 = myImage.createGraphics();
         this.paint(g2);
         return myImage.getSubimage((this.getWidth() - this.constrained_width) / 2, (this.getHeight() - this.constrained_height) / 2, this.constrained_width, this.constrained_height);
+    }
+    
+    @Override
+    public void newRawData(float[] lesX, float[] lesY, int[] lesB, long[] lesT, int res) {
     }
 }

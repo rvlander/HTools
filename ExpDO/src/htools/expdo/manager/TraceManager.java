@@ -8,7 +8,7 @@ import htools.expdo.experience.Manip;
 import htools.expdo.experience.Experience;
 import htools.core.input.InteractivePanel;
 import htools.core.input.InteractivePanelListener;
-import htools.expdo.input.Options;
+import htools.core.input.Options;
 import htools.core.traces.Trace;
 import java.awt.Graphics2D;
 import java.io.File;

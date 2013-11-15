@@ -65,7 +65,7 @@ public class MouseSampler implements Runnable, MouseListener {
 
 
             //  System.out.println(res);
-            sl.newData(clesX, clesY, clesB, clesT, res);
+            sl.newSizedData(clesX, clesY, clesB, clesT, res);
 
 
 

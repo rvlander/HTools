@@ -22,23 +22,31 @@ public class Options {
     static String config_file = System.getProperty("user.home") + "/.config/HTools/all.config";
     static Properties pop;
 
-    static {
+    public static void init(){
         Options.pop = new Properties();
         try {
             File f = new File(Options.config_file);
-            boolean needNewConf = false;
             if (!f.exists()) {
-                f.mkdirs();
+                f.getParentFile().mkdirs();
                 f.createNewFile();
-                needNewConf = true;
             }
             Options.pop.load(new FileInputStream(f));
-            if(needNewConf){
+            if(!Options.validate()){
                 HToolsConfigure.launchConfigSuite();
             }
         } catch (IOException ex) {
             Logger.getLogger(Options.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    private static boolean validate(){
+        boolean res =true;
+        res &= Options.getExportPath()!=null;
+        res &= Options.getManipPath()!=null;
+        res &= Options.getSensorBox()!=null;
+        res &= Options.getSamplerType()!=null;
+        
+        return res;
     }
 
     private static void save() {
@@ -86,18 +94,20 @@ public class Options {
         Options.save();
     }
 
-    public static int getScreenWidth() {
-        return Integer.parseInt(pop.getProperty("screen_width"));
+    public static String getManipPath() {
+        return pop.getProperty("default_manip");
     }
 
-    public static int getScreenHeight() {
-        return Integer.parseInt(pop.getProperty("screen_height"));
+    public static void setManipPath(String path) {
+        pop.setProperty("default_manip", path);
+        Options.save();
     }
 
     //xmin,xmax,ymin,ymax;
     public static int[] getSensorBox() {
         int[] res = new int[4];
         String s = pop.getProperty("sensor_box");
+        if(s==null) return null;
         String[] ss = s.split(",");
         for (int i = 0; i < ss.length; i++) {
             res[i] = Integer.parseInt(ss[i]);

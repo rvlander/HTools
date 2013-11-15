@@ -5,14 +5,12 @@ package htools.expdo.main;
  * the editor.
  */
 import htools.core.input.InteractivePanel;
-import htools.expdo.experience.ExpIO;
-import htools.expdo.experience.Manip;
-import htools.expdo.input.Options;
 import htools.core.input.Jwintab;
 import htools.expdo.manager.TraceManager;
 import htools.expdo.manager.TraceManagerUI;
 import htools.core.input.MouseSampler;
 import htools.core.input.OSValidator;
+import htools.core.input.Options;
 import htools.core.input.WintabSampler;
 import java.awt.Dimension;
 import java.awt.DisplayMode;
@@ -36,6 +34,9 @@ import org.jdom2.JDOMException;
 public class ExpDO {
 
     public static void main(String argsr[]) throws JDOMException, IOException {
+        
+
+        
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (ClassNotFoundException ex) {
@@ -48,6 +49,8 @@ public class ExpDO {
             Logger.getLogger(ExpDO.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+        Options.init();
+        
         // On récupére la liste des écrans :
         GraphicsEnvironment gEnv = GraphicsEnvironment.getLocalGraphicsEnvironment();
         GraphicsDevice[] devices = gEnv.getScreenDevices();

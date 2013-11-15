@@ -12,6 +12,7 @@ import htools.core.input.Options;
 import htools.core.input.WintabSampler;
 import htools.hollermap.manager.TraceManager;
 import htools.hollermap.manager.TraceManagerUI;
+import java.awt.DisplayMode;
 import java.awt.GraphicsConfiguration;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
@@ -28,6 +29,9 @@ import javax.swing.UnsupportedLookAndFeelException;
 public class HollermapFusion {
 
     public static void main(String argsr[]) {
+        
+        
+        
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (ClassNotFoundException ex) {
@@ -40,12 +44,16 @@ public class HollermapFusion {
             Logger.getLogger(HollermapFusion.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+        Options.init();
+        
         // On récupére la liste des écrans :
         GraphicsEnvironment gEnv = GraphicsEnvironment.getLocalGraphicsEnvironment();
         GraphicsDevice[] devices = gEnv.getScreenDevices();
 
+        int dev =0;
         GraphicsConfiguration gConfig = null;
         if (devices.length > 1) {
+            dev=1;
             gConfig = devices[1].getDefaultConfiguration();
         }
         JFrame f = new InteractivePanel(gConfig);
@@ -72,6 +80,17 @@ public class HollermapFusion {
             MouseSampler ms = new MouseSampler(ip);
             samp = new Thread(ms);
         }
+             System.out.println("version = " + Jwintab.getVersion());
+            WintabSampler ws = new WintabSampler((InteractivePanel)f);
+           // Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+            
+            DisplayMode dm = devices[dev].getDisplayMode();
+            //WintabSampler.screenX = screenSize.width;
+            //WintabSampler.screenY = screenSize.height;
+            
+            System.out.println(dm.getWidth() +" " + dm.getHeight());
+            WintabSampler.screenX =dm.getWidth();
+            WintabSampler.screenY = dm.getHeight();
         samp.setPriority(Thread.MAX_PRIORITY);
         samp.start();
 

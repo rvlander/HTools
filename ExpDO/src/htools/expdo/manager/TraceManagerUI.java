@@ -8,7 +8,7 @@ import htools.expdo.experience.ExpIO;
 import htools.expdo.experience.Manip;
 //import htools.core.tools.HToolsConfigure;
 import htools.core.input.InteractivePanel;
-import htools.expdo.input.Options;
+import htools.core.input.Options;
 
 import java.awt.Component;
 import java.io.*;

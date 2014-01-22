@@ -52,7 +52,8 @@ RUNNING
 
 You have 2 way of running the tools :
   1. Use Netbeans' run (F5) command on each project (one project = one tool).
-  1. In a terminal, cd in HTools_build  and run :
+  2. In a terminal, cd in HTools_build  and run :
+
 >$ java -Djava.library.path=. -jar <The program>.jar
 
 AUTHOR

@@ -57,30 +57,22 @@ public class HollermapFusion {
             gConfig = devices[1].getDefaultConfiguration();
         }
         JFrame f = new InteractivePanel(gConfig);
-        InteractivePanel ip = (InteractivePanel) f;
-
+        
         f.setUndecorated(true);
         f.setExtendedState(JFrame.MAXIMIZED_BOTH);
         f.setVisible(true);
-
-        Thread samp;
+      /*  Jwintab.open(f.getTitle());
+        ((InteractivePanel) f).start(0, 0);*/
+        
+        
+          Thread samp;
         if (Options.getSamplerType().equals("wintab")) {
-            
             if(OSValidator.isUnix()){
                 Jwintab.open(Options.getWacomDir());
             } else if (OSValidator.isWindows()){
                 Jwintab.open(f.getTitle());
             }
-            
-            
             System.out.println("version = " + Jwintab.getVersion());
-            WintabSampler ws = new WintabSampler(ip);
-            samp = new Thread(ws);
-        } else {
-            MouseSampler ms = new MouseSampler(ip);
-            samp = new Thread(ms);
-        }
-             System.out.println("version = " + Jwintab.getVersion());
             WintabSampler ws = new WintabSampler((InteractivePanel)f);
            // Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
             
@@ -91,13 +83,18 @@ public class HollermapFusion {
             System.out.println(dm.getWidth() +" " + dm.getHeight());
             WintabSampler.screenX =dm.getWidth();
             WintabSampler.screenY = dm.getHeight();
+            samp = new Thread(ws);
+        } else {
+            MouseSampler ms = new MouseSampler((InteractivePanel)f);
+            samp = new Thread(ms);
+        }
         samp.setPriority(Thread.MAX_PRIORITY);
         samp.start();
 
 
         TraceManager tm = new TraceManager();
-        ((InteractivePanel)ip).setInteractivePanelListener(tm);
-        TraceManagerUI tmu = new TraceManagerUI(tm, ip);
+        ((InteractivePanel)f).setInteractivePanelListener(tm);
+        TraceManagerUI tmu = new TraceManagerUI(tm, (InteractivePanel)f);
         tm.addListener(tmu);
         tmu.setVisible(true);
 
